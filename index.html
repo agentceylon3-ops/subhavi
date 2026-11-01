@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAwesome Icons සඳහා CDN Link එක (<head> ඇතුළට දාන්න) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>සුභාවි Education Institute</title>
+    <style>
+
+        body{
+            background-color: #18223c;
+            padding: 0;
+            margin: 0;
+        
+        }
+
+
+        .full-width-banner {
+    width: 100%;
+    min-height: 700px; /* ඔයාට අවශ්‍ය තරමට Height එක වෙනස් කරගන්න (e.g., 300px / 500px / 100vh) */
+    background-image: url('main.png'); /* මෙතැනට Image path එක ලබාදෙන්න */
+    background-size: cover; /* Background එක Repeat නොවී මුළු Area එකම පිරෙන සේ Scaled වේ */
+    background-position: center center; /* Horizontal & Vertical දෙකෙන්ම Image එක Centered වේ */
+    background-repeat: no-repeat; /* Image එක repeat වීම සම්පූර්ණයෙන්ම වළක්වයි */
+    background-attachment: scroll; /* Dynamic scrolling පහසුව සඳහා */
+}
+
+
+/* Container section with 75% width & centered styling */
+.details-section {
+    width: 75%;
+    
+    margin: 40px auto; /* මැදට Center වීම සඳහා */
+    margin-top: -320px;
+    border: 2px solid #ffffff; /* සුදු පැහැති Border එක */
+    border-radius: 16px; /* පොඩියට දුන්න Border Radius එක */
+    padding: 130px 120px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+/* Inside grid layout for 3 boxes */
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual Light Dark Blue Box styling */
+.info-card {
+    background-color: #1e293b; /* Light Dark Blue */
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-title {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #38bdf8;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.card-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .details-section {
+        width: 90%; /* Mobile වලදී පෙනුම ලස්සනට තියාගන්න width එක 90% දක්වා වැඩි වේ */
+        padding: 20px 15px;
+        margin-top: -280px;
+    }
+
+    .details-container {
+        grid-template-columns: 1fr; /* Mobile වලදී Box 3 එක යට එක වැටේ */
+        gap: 15px;
+    }
+
+    .full-width-banner{
+        min-height: 500px;
+    }
+    .main{
+        margin-top: 20px !important;
+    }
+    
+}
+
+
+/*image slide*/
+/* Image Slider Section */
+.gallery-section {
+    width: 75%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+.gallery-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    /* Sliders වල එකම Size එක තියාගන්න Height එක Auto Crop වෙන විදිහට */
+    height: 450px; 
+    overflow: hidden;
+    border-radius: 16px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    /* වෙනස් Size වල Photo එකම Size එකට Fit කර Crop කරගන්නේ මෙයිනි */
+    object-fit: cover; 
+    object-position: center;
+}
+
+/* Slide Dots Indicator */
+.dots-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active-dot {
+    background-color: #38bdf8;
+    width: 24px;
+    border-radius: 10px;
+}
+
+/* Mobile Responsiveness for Slider */
+@media (max-width: 768px) {
+    .gallery-section {
+        width: 90%;
+    }
+    .slider-container {
+        height: 250px; /* Mobile වලදී Height එක සාපේක්ෂව අඩු වේ */
+    }
+}
+
+/*count down*/
+/* Countdown Section Styling */
+.countdown-section {
+    width: 75%;
+    margin: 40px auto;
+    background-color: #12192c;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.countdown-heading {
+    font-size: 1.4rem;
+    color: #38bdf8;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.time-box {
+    background-color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.time-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.time-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .countdown-section {
+        width: 90%;
+        padding: 20px 15px;
+    }
+
+    .countdown-container {
+        grid-template-columns: repeat(2, 1fr); /* Mobile වලදී Box 2 බැගින් පේළි 2කට වැටේ */
+        gap: 10px;
+    }
+
+    .time-number {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+/*location*/
+/* Location Section Styling */
+.location-section {
+    width: 75%;
+    margin: 40px auto;
+    background-color: #12192c;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    color: #38bdf8;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.location-desc {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.map-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.map-btn-container {
+    margin-top: 20px;
+}
+
+.map-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
+}
+
+.map-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.6);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .location-section {
+        width: 90%;
+        padding: 20px 15px;
+    }
+    
+    .map-container iframe {
+        height: 300px; /* Mobile වලදී Map එකේ උස අඩු වේ */
+    }
+}
+
+/*contact*/
+/* Contact Us Section Styling (White Theme) */
+.contact-section {
+    width: 75%;
+    margin: 40px auto;
+    background-color: #ffffff; /* සම්පූර්ණයෙන්ම සුදු පැහැය */
+    color: #1e293b;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-title {
+    font-size: 1.8rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.contact-desc {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 450px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.phone-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.phone-number:hover {
+    color: #2563eb;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25d366; /* WhatsApp Green */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+    background-color: #22bf5b;
+    transform: translateY(-2px);
+}
+
+.wa-icon {
+    fill: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .contact-section {
+        width: 90%;
+        padding: 30px 15px;
+    }
+    
+    .phone-number {
+        font-size: 1.3rem;
+    }
+}
+
+
+/* Developer Credit Footer (Watermark Style) */
+.developer-footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 30px;
+}
+
+.developer-footer p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4); /* Watermark එකක් වගේ පෙනෙන සේ සකස් කළා */
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.developer-footer span {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.developer-footer a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.developer-footer a:hover {
+    color: #38bdf8;
+}
+
+
+
+/*intro video*/
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(7, 11, 25, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    height: 85vh;
+    max-height: 700px;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-blurred {
+    filter: blur(12px) brightness(0.6);
+    transition: filter 0.5s ease;
+}
+
+.video-unblur {
+    filter: blur(0px) brightness(1) !important;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(29, 78, 216, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.skip-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 20;
+    background: rgba(15, 23, 42, 0.7);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+@media (max-width: 600px) {
+    .video-container {
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+}
+
+
+/* Social Media Section Styling */
+.social-section {
+    width: 75%;
+    margin: 30px auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.social-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.social-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Facebook Color & Shadow */
+.social-btn.facebook {
+    background-color: #1877f2;
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+}
+
+/* WhatsApp Color & Shadow */
+.social-btn.whatsapp {
+    background-color: #25d366;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+/* TikTok Color & Shadow */
+.social-btn.tiktok {
+    background-color: #000000;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Hover Effects */
+.social-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-btn.facebook:hover {
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.7);
+}
+
+.social-btn.whatsapp:hover {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7);
+}
+
+.social-btn.tiktok:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .social-section {
+        width: 90%;
+    }
+    
+    .social-icons-container {
+        gap: 15px;
+    }
+
+    .social-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Fullscreen Intro Video Overlay -->
+<!-- Fullscreen Intro Video Overlay -->
+<div id="introOverlay" class="intro-overlay">
+    <div class="video-container">
+        <!-- Skip Button -->
+        <button id="skipBtn" class="skip-btn" onclick="closeIntro()">Skip Intro &rsaquo;</button>
+
+        <!-- Center Play Button -->
+        <button id="playBtn" class="play-btn" onclick="startVideo()">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span>Open Invitation</span>
+        </button>
+        
+        <!-- Video Player -->
+        <video id="introVideo" class="video-blurred" playsinline>
+            <source src="intro.mp4" type="video/mp4">
+            ඔබගේ Browser එක මගින් Video එක Support කරනු නොලැබේ.
+        </video>
+    </div>
+</div>
+
+
+    
+    <!-- Full Width Image Container -->
+<div class="full-width-banner"></div>
+
+<section class="details-section">
+    <h1 style="text-align:center !important;font-size: 30px; margin-top: -20px;" class="main">Grand Opening | සුභාවි Education Institute</h1>
+    <div class="details-container">
+        
+        <!-- Box 1: Date -->
+        <div class="info-card">
+            <span class="card-title">Date</span>
+            <p class="card-value">2026 දෙසැම්බර් 3</p>
+        </div>
+
+        <!-- Box 2: Time -->
+        <div class="info-card">
+            <span class="card-title">Time</span>
+            <p class="card-value">ප.ව. 4:30 සිට</p>
+        </div>
+
+        <!-- Box 3: Venue -->
+        <div class="info-card">
+            <span class="card-title">Venue</span>
+            <p class="card-value">සුභාවි <br>Perera Mawatha</p>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Slider Section -->
+<section class="gallery-section">
+    <h2 class="gallery-title">අපගේ අද්‍යාපන ආයතනය</h2>
+    <div class="slider-container">
+        <div class="slide active">
+            <img src="main.png" alt="Institute Photo 1">
+        </div>
+        <div class="slide">
+            <img src="1.JPG" alt="Institute Photo 2">
+        </div>
+        <div class="slide">
+            <img src="2.JPG" alt="Institute Photo 3">
+        </div>
+        <div class="slide">
+            <img src="3.JPG" alt="Institute Photo 4">
+        </div>
+    </div>
+    
+    <!-- Navigation Dots -->
+    <div class="dots-container">
+        <span class="dot active-dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+</section>
+
+
+<!-- Countdown Section -->
+<section class="countdown-section">
+    <h2 class="countdown-heading">විවෘත වීමට තව ඇත්තේ...</h2>
+    <div class="countdown-container" id="countdown">
+        <div class="time-box">
+            <span id="days" class="time-number">00</span>
+            <span class="time-label">දින</span>
+        </div>
+        <div class="time-box">
+            <span id="hours" class="time-number">00</span>
+            <span class="time-label">පැය</span>
+        </div>
+        <div class="time-box">
+            <span id="minutes" class="time-number">00</span>
+            <span class="time-label">මිනිත්තු</span>
+        </div>
+        <div class="time-box">
+            <span id="seconds" class="time-number">00</span>
+            <span class="time-label">තත්පර</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- Location Section -->
+<section class="location-section">
+    <h2 class="section-title" style="color: rgb(255, 252, 247);">Location</h2>
+    <p class="location-desc">පහත සිතියම ඔස්සේ අපගේ අධ්‍යාපන ආයතනය වෙත පහසුවෙන් පැමිණිය හැක.</p>
+    
+    <div class="map-container">
+        <!-- Google Maps Embed Iframe -->
+
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10767.383281550425!2d79.8656589777993!3d6.960055993040404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae258f3659bf84f%3A0xeb5703c257c8d54c!2s719%20K.%20Cyril%20C.%20Perera%20Mawatha%2C%20Colombo%2001500!5e1!3m2!1sen!2slk!4v1793527940744!5m2!1sen!2slk" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- Direct Google Maps App Link Button -->
+    <div class="map-btn-container">
+        <a href="https://maps.app.goo.gl/ESjgdcTTpVviz5uu6" target="_blank" class="map-btn">Google Maps ඔස්සේ විවෘත කරන්න</a>
+    </div>
+</section>
+
+<!-- Contact Us Section (White Theme) -->
+<section class="contact-section">
+    <h2 class="contact-title">අප හා සම්බන්ධ වන්න</h2>
+    <p class="contact-desc">ඔබට ඇති ඕනෑම විමසීමක් සඳහා පහත අංකය ඔස්සේ අපව අමතන්න හෝ WhatsApp පණිවිඩයක් එවන්න.</p>
+    
+    <div class="contact-card">
+        <div class="contact-info">
+            <span class="label">දුරකථන අංකය (Hotline)</span>
+            <a href="tel:0767085825" class="phone-number">076 708 5825</a>
+        </div>
+        
+        <!-- WhatsApp Direct Button -->
+        <a href="https://wa.me/94767085825?text=ආයුබෝවන්!%20මම%20පන්ති%20විස්තර%20දැනගන්න%20කැමතියි." target="_blank" class="whatsapp-btn">
+            <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.47 0-2.91-.4-4.17-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.25-2.83-1.25-4.38 0-4.55 3.7-8.25 8.25-8.25 2.2 0 4.27.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.55-3.7 8.25-8.24 8.25zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.22-.09-.38-.13-.54.13-.16.25-.62.81-.76.98-.14.17-.28.19-.53.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.52.11-.11.25-.28.38-.42.13-.14.17-.23.25-.38.08-.15.04-.28-.02-.39-.06-.11-.54-1.31-.74-1.79-.2-.47-.4-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.34.98 2.5c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.29z"/></svg>
+            WhatsApp ඔස්සේ සම්බන්ධ වන්න
+        </a>
+    </div>
+</section>
+
+<!-- Social Media Section -->
+<section class="social-section">
+    
+    <div class="social-icons-container">
+        <!-- Facebook Icon -->
+        <a href="https://www.facebook.com/share/1JFnfn2z4m/?mibextid=wwXIfr" target="_blank" class="social-btn facebook" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <!-- WhatsApp Icon -->
+        <a href="https://whatsapp.com/channel/0029VaoLCAe0LKZFvhMUP10C" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- TikTok Icon -->
+        <a href="https://www.tiktok.com/@subhavi_institute?_r=1&_t=ZS-9B2XJtipc84 " target="_blank" class="social-btn tiktok" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+</section>
+
+
+
+<!-- Developer Credit Footer -->
+<footer class="developer-footer">
+    <p>Designed by <span>Home Artist</span> - <a href="tel:0781227941">0781227941</a></p>
+</footer>
+
+
+
+
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active-dot'));
+
+        slides[index].classList.add('active');
+        dots[index].classList.add('active-dot');
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % totalSlides;
+        showSlide(slideIndex);
+    }
+
+    function currentSlide(index) {
+        slideIndex = index;
+        showSlide(slideIndex);
+    }
+
+    // තත්පර 3.5 කට වරක් ස්වයංක්‍රීයව Slide වේ
+    setInterval(nextSlide, 3500);
+
+    
+
+    //count down 
+    // Target Date: December 3, 2026, 16:30:00 (4:30 PM)
+    const countDownDate = new Date("December 3, 2026 16:30:00").getTime();
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the elements
+        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+        // If the count down is finished
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "<h3 style='color: #38bdf8; grid-column: span 4;'>ආයතනය දැන් විවෘතයි! පැමිණෙන්න!</h3>";
+        }
+    }, 1000);
+
+
+
+    //intro
+ const introOverlay = document.getElementById('introOverlay');
+    const introVideo = document.getElementById('introVideo');
+    const playBtn = document.getElementById('playBtn');
+
+    document.body.classList.add('no-scroll');
+
+    function startVideo() {
+        playBtn.style.display = 'none';
+        introVideo.classList.remove('video-blurred');
+        introVideo.classList.add('video-unblur');
+        introVideo.play().catch(err => console.log("Play error:", err));
+    }
+
+    function closeIntro() {
+        introOverlay.style.opacity = '0';
+        introOverlay.style.visibility = 'hidden';
+        document.body.classList.remove('no-scroll');
+        introVideo.pause();
+    }
+
+    introVideo.addEventListener('ended', function() {
+        closeIntro();
+    });
+
+</script>
+</body>
+</html>
