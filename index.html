@@ -652,6 +652,122 @@ body.no-scroll {
 }
 
 
+/*teacher card*/
+/* Faculty Section Styling (White Theme) */
+.faculty-section {
+    width: 75%;
+    margin: 40px auto;
+    background-color: #ffffff; /* සුදු පැහැති පසුබිම */
+    border: none; /* Border එක ඉවත් කළා */
+    border-radius: 20px; /* ලස්සන Border Radius එකක් */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft Shadow එකක් */
+}
+
+.faculty-main-title {
+    font-size: 1.8rem;
+    color: #0f172a; /* සුදු Background එකට ගැලපෙන Dark Text */
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.faculty-sub-title {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 35px;
+}
+
+/* Responsive Grid for 13 Cards */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.teacher-card {
+    background-color: #f8fafc; /* Cards සඳහා ඉතා ලා පැහැති Gray/White Tone එකක් */
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
+}
+
+.teacher-img-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.teacher-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover .teacher-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.teacher-info {
+    padding: 15px 10px;
+    background-color: #f8fafc;
+}
+
+.teacher-name {
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.teacher-subject {
+    color: #2563eb; /* Highlight වීමට ලස්සන Blue Color එකක් */
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .faculty-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .faculty-section {
+        width: 90%;
+        padding: 30px 15px;
+    }
+
+    .faculty-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .teacher-img-wrapper {
+        height: 160px;
+    }
+
+    .teacher-name {
+        font-size: 0.9rem;
+    }
+
+    .teacher-subject {
+        font-size: 0.78rem;
+    }
+}
+
 
     </style>
 </head>
@@ -684,7 +800,7 @@ body.no-scroll {
 <div class="full-width-banner"></div>
 
 <section class="details-section">
-    <h1 style="text-align:center !important;font-size: 30px; margin-top: -20px;" class="main">Grand Opening | සුභාවි Education Institute</h1>
+    <h1 style="text-align:center !important;font-size: 30px; margin-top: -20px;" class="main">Invite For You | සුභාවි Education Institute</h1>
     <div class="details-container">
         
         <!-- Box 1: Date -->
@@ -702,7 +818,7 @@ body.no-scroll {
         <!-- Box 3: Venue -->
         <div class="info-card">
             <span class="card-title">Venue</span>
-            <p class="card-value">සුභාවි <br>Perera Mawatha</p>
+            <p class="card-value">සුභාවි</p>
         </div>
     </div>
 </section>
@@ -783,6 +899,150 @@ body.no-scroll {
         <a href="https://maps.app.goo.gl/ESjgdcTTpVviz5uu6" target="_blank" class="map-btn">Google Maps ඔස්සේ විවෘත කරන්න</a>
     </div>
 </section>
+
+<!-- Teaching Faculty Section -->
+<section class="faculty-section">
+    <h2 class="faculty-main-title">අපගේ ගුරු මණ්ඩලය</h2>
+    <p class="faculty-sub-title">දිවයිනේ විශිෂ්ටතම ප්‍රතිඵල වෙනුවෙන් කැපවූ ප්‍රවීණ ඇදුරු මඬුල්ල</p>
+
+    <div class="faculty-grid">
+        <!-- Teacher Card 1 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t1.jpg" alt="ගුරුතුමාගේ නම">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">උපේක්ෂා ටීචර්</h4>
+                <p class="teacher-subject">ශිෂ්‍යත්වය</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 2 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t2.jpg" alt="අනූශා ගොඩගේ">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">අනූශා ගොඩගේ</h4>
+                <p class="teacher-subject">ENGLISH</p>
+            </div>
+        </div>
+
+        <!-- Duplicate this card block up to 13 teachers -->
+        <!-- Teacher Card 3 to 13 (ඔයාගේ photo 13 ට අනුව මේ block එක 13 පාරක් repeat කරන්න) -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t3.jpg" alt="විමුක්ති රත්නවීර">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">විමුක්ති රත්නවීර</h4>
+                <p class="teacher-subject">COMMERCE</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 4 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t4.jpg" alt="නයනා ටීචර්">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">නයනා ටීචර්</h4>
+                <p class="teacher-subject">ශිෂ්‍යත්වය</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 5 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t5.jpg" alt="දර්ශන දැදිගම">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">දර්ශන දැදිගම</h4>
+                <p class="teacher-subject">ගණිතය</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 6 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t6.jpg" alt="ශෙහාන් පෙරේරා">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">ශෙහාන් පෙරේරා</h4>
+                <p class="teacher-subject">SCIENCE</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 7 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t7.jpg" alt="ඉසර පින්සර">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">ඉසර පින්සර</h4>
+                <p class="teacher-subject">ICT</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 8 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t8.jpg" alt="අශාන් ද සිල්වා">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">අශාන් ද සිල්වා</h4>
+                <p class="teacher-subject">සිංහල ඉතිහාසය</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 9 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t9.jpg" alt="බිම්සර නදීශ">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">බිම්සර නදීශ</h4>
+                <p class="teacher-subject">විද්‍යාව</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 10 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t10.jpg" alt="ශානු රූපසිංහ">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">ශානු රූපසිංහ</h4>
+                <p class="teacher-subject">විද්‍යාව</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 11-->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t11.jpg" alt="වාසනා මුදලිගේ">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">වාසනා මුදලිගේ</h4>
+                <p class="teacher-subject">ENGLISH</p>
+            </div>
+        </div>
+
+        <!-- Teacher Card 12 -->
+        <div class="teacher-card">
+            <div class="teacher-img-wrapper">
+                <img src="t12.jpg" alt="ඩිලංක සෙන්සේ">
+            </div>
+            <div class="teacher-info">
+                <h4 class="teacher-name">ඩිලංක සෙන්සේ</h4>
+                <p class="teacher-subject">JAPANESE</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
 
 <!-- Contact Us Section (White Theme) -->
 <section class="contact-section">
