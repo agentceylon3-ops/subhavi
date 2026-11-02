@@ -769,6 +769,227 @@ body.no-scroll {
 }
 
 
+/*apigana*/
+/* About Section Styling (White Theme) */
+.about-section {
+    width: 75%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+.about-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about-badge {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.about-title {
+    font-size: 1.8rem;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.about-desc {
+    font-size: 0.98rem;
+    color: #475569;
+    line-height: 1.7;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+}
+
+/* Audio Wrapper Inside About Card */
+.audio-player-wrapper {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.audio-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #1e293b;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.audio-title-box i {
+    color: #2563eb;
+}
+
+.custom-audio-player {
+    width: 100%;
+    outline: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about-section {
+        width: 90%;
+    }
+    
+    .about-card {
+        padding: 25px 15px;
+    }
+
+    .about-title {
+        font-size: 1.5rem;
+    }
+
+    .audio-player-wrapper {
+        padding: 15px 10px;
+    }
+}
+
+
+/*invite poto*/
+/* Invitation Image Section Styling (White Theme) */
+.invitation-img-section {
+    width: 75%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+.invitation-img-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.invitation-img-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.invitation-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .invitation-img-section {
+        width: 90%;
+        margin: 25px auto;
+    }
+
+    .invitation-img-card {
+        border-radius: 16px;
+    }
+}
+
+
+
+/* Welcome Screen Overlay Styling */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.7); /* Background එක ලා පැහැයෙන් Blur වීමට */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 99998; /* Intro Video එකට (99999) යටින්, Site එකට උඩින් */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.welcome-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.welcome-content {
+    text-align: center;
+    padding: 20px;
+    transform: scale(0.8);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.welcome-overlay.show .welcome-content {
+    transform: scale(1);
+}
+
+.welcome-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.welcome-text .divider {
+    color: #2563eb;
+    font-weight: 400;
+}
+
+.welcome-text .inst-name {
+    color: #2563eb;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .welcome-text {
+        font-size: 1.5rem;
+        gap: 8px;
+    }
+}
+
+
+
+
+/*scrool animation*/
+/* Scroll Animation Base Styles */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
     </style>
 </head>
 <body>
@@ -791,6 +1012,14 @@ body.no-scroll {
             <source src="intro.mp4" type="video/mp4">
             ඔබගේ Browser එක මගින් Video එක Support කරනු නොලැබේ.
         </video>
+    </div>
+</div>
+
+
+<!-- Welcome Screen Overlay -->
+<div id="welcomeOverlay" class="welcome-overlay">
+    <div class="welcome-content">
+        <h1 class="welcome-text">Welcome <span class="divider">|</span> <span class="inst-name">සුභාවි Institute</span></h1>
     </div>
 </div>
 
@@ -823,9 +1052,45 @@ body.no-scroll {
     </div>
 </section>
 
+<!-- Invitation Image Section -->
+<section class="invitation-img-section">
+    <div class="invitation-img-card">
+        <img src="Subawee invi.png" alt="Invitation Card" class="invitation-img">
+    </div>
+</section>
+
+
+<!--introdus us-->
+<!-- About Us & Audio Section (White Theme) -->
+<section class="about-section">
+    <div class="about-card">
+        <span class="about-badge reveal">අපගේ හැඳින්වීම</span>
+        <h2 class="about-title reveal">අපි ගැන</h2>
+        <p class="about-desc reveal">
+            දිවයිනේ දක්ෂම සහ පළපුරුදු ගුරු මණ්ඩලයක මගපෙන්වීම යටතේ, සිසුන්ට උසස් ප්‍රතිඵල ලබා දීමේ අරමුණින් ආරම්භ කරන ලද අප ආයතනය, සෑම දරුවෙකුටම පුද්ගල අවධානය ලබා දෙමින් නිවැරදි මඟපෙන්වීම ලබා දෙයි. අපගේ ඉගැන්වීම් රටාව සහ විශේෂ වැඩසටහන් පිළිබඳව වැඩිදුර විස්තර පහත හඬ පටයෙන් ශ්‍රවණය කරන්න.
+        </p>
+
+        <!-- Standard Audio Player Component -->
+        <div class="audio-player-wrapper reveal">
+            <div class="audio-title-box">
+                <i class="fas fa-volume-high"></i>
+                <span>අපගේ හඬ පටය (Audio Introduction)</span>
+            </div>
+            
+            <audio controls class="custom-audio-player">
+                <source src="song.mp3" type="audio/mpeg">
+                ඔබගේ Browser එක මගින් Audio එක Support කරනු නොලැබේ.
+            </audio>
+        </div>
+    </div>
+</section>
+
+
+
+
 <!-- Gallery Slider Section -->
-<section class="gallery-section">
-    <h2 class="gallery-title">අපගේ අද්‍යාපන ආයතනය</h2>
+<section class="gallery-section reveal">
+    <h2 class="gallery-title ">අපගේ අද්‍යාපන ආයතනය</h2>
     <div class="slider-container">
         <div class="slide active">
             <img src="main.png" alt="Institute Photo 1">
@@ -852,7 +1117,7 @@ body.no-scroll {
 
 
 <!-- Countdown Section -->
-<section class="countdown-section">
+<section class="countdown-section reveal">
     <h2 class="countdown-heading">විවෘත වීමට තව ඇත්තේ...</h2>
     <div class="countdown-container" id="countdown">
         <div class="time-box">
@@ -876,7 +1141,7 @@ body.no-scroll {
 
 
 <!-- Location Section -->
-<section class="location-section">
+<section class="location-section reveal">
     <h2 class="section-title" style="color: rgb(255, 252, 247);">Location</h2>
     <p class="location-desc">පහත සිතියම ඔස්සේ අපගේ අධ්‍යාපන ආයතනය වෙත පහසුවෙන් පැමිණිය හැක.</p>
     
@@ -896,167 +1161,27 @@ body.no-scroll {
 
     <!-- Direct Google Maps App Link Button -->
     <div class="map-btn-container">
-        <a href="https://maps.app.goo.gl/ESjgdcTTpVviz5uu6" target="_blank" class="map-btn">Google Maps ඔස්සේ විවෘත කරන්න</a>
+        <a href="https://maps.app.goo.gl/ESjgdcTTpVviz5uu6" target="_blank" class="map-btn reveal">Google Maps ඔස්සේ විවෘත කරන්න</a>
     </div>
 </section>
 
-<!-- Teaching Faculty Section -->
-<section class="faculty-section">
-    <h2 class="faculty-main-title">අපගේ ගුරු මණ්ඩලය</h2>
-    <p class="faculty-sub-title">දිවයිනේ විශිෂ්ටතම ප්‍රතිඵල වෙනුවෙන් කැපවූ ප්‍රවීණ ඇදුරු මඬුල්ල</p>
 
-    <div class="faculty-grid">
-        <!-- Teacher Card 1 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t1.jpg" alt="ගුරුතුමාගේ නම">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">උපේක්ෂා ටීචර්</h4>
-                <p class="teacher-subject">ශිෂ්‍යත්වය</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 2 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t2.jpg" alt="අනූශා ගොඩගේ">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">අනූශා ගොඩගේ</h4>
-                <p class="teacher-subject">ENGLISH</p>
-            </div>
-        </div>
-
-        <!-- Duplicate this card block up to 13 teachers -->
-        <!-- Teacher Card 3 to 13 (ඔයාගේ photo 13 ට අනුව මේ block එක 13 පාරක් repeat කරන්න) -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t3.jpg" alt="විමුක්ති රත්නවීර">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">විමුක්ති රත්නවීර</h4>
-                <p class="teacher-subject">COMMERCE</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 4 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t4.jpg" alt="නයනා ටීචර්">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">නයනා ටීචර්</h4>
-                <p class="teacher-subject">ශිෂ්‍යත්වය</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 5 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t5.jpg" alt="දර්ශන දැදිගම">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">දර්ශන දැදිගම</h4>
-                <p class="teacher-subject">ගණිතය</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 6 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t6.jpg" alt="ශෙහාන් පෙරේරා">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">ශෙහාන් පෙරේරා</h4>
-                <p class="teacher-subject">SCIENCE</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 7 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t7.jpg" alt="ඉසර පින්සර">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">ඉසර පින්සර</h4>
-                <p class="teacher-subject">ICT</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 8 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t8.jpg" alt="අශාන් ද සිල්වා">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">අශාන් ද සිල්වා</h4>
-                <p class="teacher-subject">සිංහල ඉතිහාසය</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 9 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t9.jpg" alt="බිම්සර නදීශ">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">බිම්සර නදීශ</h4>
-                <p class="teacher-subject">විද්‍යාව</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 10 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t10.jpg" alt="ශානු රූපසිංහ">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">ශානු රූපසිංහ</h4>
-                <p class="teacher-subject">විද්‍යාව</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 11-->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t11.jpg" alt="වාසනා මුදලිගේ">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">වාසනා මුදලිගේ</h4>
-                <p class="teacher-subject">ENGLISH</p>
-            </div>
-        </div>
-
-        <!-- Teacher Card 12 -->
-        <div class="teacher-card">
-            <div class="teacher-img-wrapper">
-                <img src="t12.jpg" alt="ඩිලංක සෙන්සේ">
-            </div>
-            <div class="teacher-info">
-                <h4 class="teacher-name">ඩිලංක සෙන්සේ</h4>
-                <p class="teacher-subject">JAPANESE</p>
-            </div>
-        </div>
-        
-    </div>
-</section>
 
 
 
 <!-- Contact Us Section (White Theme) -->
 <section class="contact-section">
-    <h2 class="contact-title">අප හා සම්බන්ධ වන්න</h2>
-    <p class="contact-desc">ඔබට ඇති ඕනෑම විමසීමක් සඳහා පහත අංකය ඔස්සේ අපව අමතන්න හෝ WhatsApp පණිවිඩයක් එවන්න.</p>
+    <h2 class="contact-title reveal">අප හා සම්බන්ධ වන්න</h2>
+    <p class="contact-desc reveal">ඔබට ඇති ඕනෑම විමසීමක් සඳහා පහත අංකය ඔස්සේ අපව අමතන්න හෝ WhatsApp පණිවිඩයක් එවන්න.</p>
     
-    <div class="contact-card">
+    <div class="contact-card reveal">
         <div class="contact-info">
             <span class="label">දුරකථන අංකය (Hotline)</span>
             <a href="tel:0767085825" class="phone-number">076 708 5825</a>
         </div>
         
         <!-- WhatsApp Direct Button -->
-        <a href="https://wa.me/94767085825?text=ආයුබෝවන්!%20මම%20පන්ති%20විස්තර%20දැනගන්න%20කැමතියි." target="_blank" class="whatsapp-btn">
+        <a href="https://wa.me/94767085825?text=ආයුබෝවන්!%20මම%20පන්ති%20විස්තර%20දැනගන්න%20කැමතියි." target="_blank" class="whatsapp-btn reveal">
             <svg class="wa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.47 0-2.91-.4-4.17-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.25-2.83-1.25-4.38 0-4.55 3.7-8.25 8.25-8.25 2.2 0 4.27.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.55-3.7 8.25-8.24 8.25zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.22-.09-.38-.13-.54.13-.16.25-.62.81-.76.98-.14.17-.28.19-.53.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.52.11-.11.25-.28.38-.42.13-.14.17-.23.25-.38.08-.15.04-.28-.02-.39-.06-.11-.54-1.31-.74-1.79-.2-.47-.4-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.34.98 2.5c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.29z"/></svg>
             WhatsApp ඔස්සේ සම්බන්ධ වන්න
         </a>
@@ -1064,7 +1189,7 @@ body.no-scroll {
 </section>
 
 <!-- Social Media Section -->
-<section class="social-section">
+<section class="social-section reveal">
     
     <div class="social-icons-container">
         <!-- Facebook Icon -->
@@ -1177,6 +1302,93 @@ body.no-scroll {
     introVideo.addEventListener('ended', function() {
         closeIntro();
     });
+
+
+
+    //welcome MSG
+   document.addEventListener('DOMContentLoaded', function() {
+        const introOverlay = document.getElementById('introOverlay');
+        const introVideo = document.getElementById('introVideo');
+        const playBtn = document.getElementById('playBtn');
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+
+        // Page එක open වෙද්දී scroll block කිරීම
+        if (document.body) {
+            document.body.classList.add('no-scroll');
+        }
+
+        // Video එක play කිරීම (Global function for onclick)
+        window.startVideo = function() {
+            if (playBtn) {
+                playBtn.style.display = 'none';
+            }
+            if (introVideo) {
+                introVideo.classList.remove('video-blurred');
+                introVideo.classList.add('video-unblur');
+                introVideo.play().catch(err => console.log("Play error:", err));
+            }
+        };
+
+        // Intro close කරලා welcome screen එක පෙන්වීම
+        window.closeIntro = function() {
+            if (introOverlay) {
+                introOverlay.style.opacity = '0';
+                introOverlay.style.visibility = 'hidden';
+            }
+            if (introVideo) {
+                introVideo.pause();
+            }
+
+            setTimeout(() => {
+                if (welcomeOverlay) {
+                    welcomeOverlay.classList.add('show');
+                }
+            }, 300);
+
+            setTimeout(() => {
+                if (welcomeOverlay) {
+                    welcomeOverlay.classList.remove('show');
+                }
+                if (document.body) {
+                    document.body.classList.remove('no-scroll');
+                }
+            }, 2800);
+        };
+
+        // Video එක අවසන් වූ පසු
+        if (introVideo) {
+            introVideo.addEventListener('ended', function() {
+                window.closeIntro();
+            });
+        }
+    });
+
+
+
+    //scrool Animation
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Element එකෙන් 15%ක් පෙනුන ගමන් animation එක පටන් ගනී
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // entry.target (ඔබට අවශ්‍ය නම් එක වතාවක් පමණක් animate වී නවතින්න මෙහි 
+                    // observer.unobserve(entry.target); යන්න එකතු කළ හැක)
+                }
+            });
+        }, observerOptions);
+
+        // .reveal class එක ඇති සියලුම elements select කර observe කිරීම
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    });
+
+
 
 </script>
 </body>
