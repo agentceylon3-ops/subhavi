@@ -990,6 +990,131 @@ body.no-scroll {
 
 
 
+/* RSVP Section Styling */
+.rsvp-section {
+    width: 75%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+.rsvp-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    text-align: left;
+}
+
+.rsvp-badge {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.rsvp-title {
+    font-size: 1.6rem;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.rsvp-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    outline: none;
+    background-color: #f8fafc;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.rsvp-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25d366;
+    color: #ffffff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.rsvp-submit-btn:hover {
+    background-color: #22bf5b;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .rsvp-section {
+        width: 90%;
+        margin: 25px auto;
+    }
+
+    .rsvp-card {
+        padding: 25px 15px;
+    }
+
+    .rsvp-title {
+        font-size: 1.3rem;
+    }
+    .subhavi{
+        width: 20% !important;
+        border-radius: 10px 10px 10px 10px !important;
+        margin-top: 0 !important;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -1019,7 +1144,7 @@ body.no-scroll {
 <!-- Welcome Screen Overlay -->
 <div id="welcomeOverlay" class="welcome-overlay">
     <div class="welcome-content">
-        <h1 class="welcome-text">Welcome <span class="divider">|</span> <span class="inst-name">සුභාවි Institute</span></h1>
+        <h1 class="welcome-text">Welcome <span class="divider">|</span> <span class="inst-name"> සුභාවි Institute</span></h1>
     </div>
 </div>
 
@@ -1029,7 +1154,8 @@ body.no-scroll {
 <div class="full-width-banner"></div>
 
 <section class="details-section">
-    <h1 style="text-align:center !important;font-size: 30px; margin-top: -20px;" class="main">Invite For You | සුභාවි Education Institute</h1>
+    <h1 style="text-align:center !important;font-size: 30px; margin-top: -20px;" class="main">You Are Invited | සුභාවි Education Institute</h1>
+  <!-- <img class="subhavi" style="width: 10%; border-radius: 50% 10% 50% 10%; margin: -390px 0 0 43% ;" src="Subawee invi.png"> --> 
     <div class="details-container">
         
         <!-- Box 1: Date -->
@@ -1165,6 +1291,36 @@ body.no-scroll {
     </div>
 </section>
 
+
+<!-- RSVP Section (White Theme) -->
+<section class="rsvp-section reveal">
+    <div class="rsvp-card">
+        <span class="rsvp-badge">RSVP / පැමිණීම තහවුරු කිරීම</span>
+        <h3 class="rsvp-title">ඔබේ පැමිණීම දන්වන්න</h3>
+        <p class="rsvp-desc">පහත තොරතුරු පුරවා WhatsApp හරහා අප වෙත එවන්න.</p>
+
+        <form id="rsvpForm" class="rsvp-form" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+                <label for="guestName">ඔබගේ නම (Guest Name)</label>
+                <input type="text" id="guestName" placeholder="උදා: කේ. ජී. පෙරේරා" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rsvpStatus">විවෘත කිරීමේ උත්සවයට සහභාගී වීම</label>
+                <select id="rsvpStatus" required>
+                    <option value="" disabled selected>තෝරන්න...</option>
+                    <option value="ඔව්, මම/අපි එනවා.">ඔව්, මම/අපි එනවා (Will Attend)</option>
+                    <option value="සමාවන්න, මට/අපට එන්න බැරිවෙයි.">සමාවන්න, මට එන්න බැරිවෙයි (Cannot Attend)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="rsvp-submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01C17.18 3.03 14.69 2 12.04 2zM12.04 20.1c-1.47 0-2.91-.4-4.17-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.25-2.83-1.25-4.38 0-4.55 3.7-8.25 8.25-8.25 2.2 0 4.27.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.55-3.7 8.25-8.24 8.25zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.22-.09-.38-.13-.54.13-.16.25-.62.81-.76.98-.14.17-.28.19-.53.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.52.11-.11.25-.28.38-.42.13-.14.17-.23.25-.38.08-.15.04-.28-.02-.39-.06-.11-.54-1.31-.74-1.79-.2-.47-.4-.41-.54-.42l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.34.98 2.5c.12.16 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.47-.29z"/></svg>
+                <span>WhatsApp හරහා යොමු කරන්න</span>
+            </button>
+        </form>
+    </div>
+</section>
 
 
 
@@ -1387,6 +1543,25 @@ body.no-scroll {
         const revealElements = document.querySelectorAll('.reveal');
         revealElements.forEach(el => observer.observe(el));
     });
+
+
+    //rsvp
+    function sendToWhatsApp(event) {
+        event.preventDefault();
+        
+        const guestName = document.getElementById('guestName').value.trim();
+        const rsvpStatus = document.getElementById('rsvpStatus').value;
+        
+        // WhatsApp Number (0767085825 with country code 94)
+        const phoneNumber = "94767085825";
+        
+        // WhatsApp message formatting
+        const message = `*RSVP - පැමිණීම තහවුරු කිරීම*%0A%0A*නම:* ${encodeURIComponent(guestName)}%0A*තත්ත්වය:* ${encodeURIComponent(rsvpStatus)}`;
+        
+        // Open WhatsApp link
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, '_blank');
+    }
 
 
 
